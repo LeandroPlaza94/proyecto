@@ -18,10 +18,9 @@ def agregar_turno():
             if 1 <= opcion_cat <= len(categorias_lista):
                 categoria_elegida = categorias_lista[opcion_cat - 1]
                 break
-            else:
-                print("Opción inválida. Intente de nuevo.")
         except ValueError:
-            print("Por favor, ingrese un número válido.")
+            pass
+        print("Por favor, ingrese un número válido.")
     
     print(f"Servicios disponibles en {categoria_elegida}:")
     servicios = CATEGORIAS[categoria_elegida]

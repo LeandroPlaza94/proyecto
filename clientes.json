@@ -157,5 +157,12 @@
         "servicio": "Tinte de cabello",
         "fecha": "2025-06-15",
         "hora": "13:30"
+    },
+    {
+        "nombre": "1",
+        "categoria": "Cabello",
+        "servicio": "Corte de cabello",
+        "fecha": "2025-02-15",
+        "hora": "12:00"
     }
 ]
