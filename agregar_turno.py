@@ -67,17 +67,14 @@ def agregar_turno():
         "hora": hora
     }
 
-    # Guardar en clientes.json
+    # Guardar en clientes.json (sin except json.JSONDecodeError)
     archivo = "clientes.json"
     if os.path.exists(archivo):
         with open(archivo, "r", encoding="utf-8") as f:
-            try:
-                clientes = json.load(f)
-                if isinstance(clientes, dict):
-                    clientes = [clientes]
-                elif not isinstance(clientes, list):
-                    clientes = []
-            except json.JSONDecodeError:
+            clientes = json.load(f)
+            if isinstance(clientes, dict):
+                clientes = [clientes]
+            elif not isinstance(clientes, list):
                 clientes = []
     else:
         clientes = []

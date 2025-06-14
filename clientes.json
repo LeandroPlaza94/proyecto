@@ -1,11 +1,6 @@
 [
     {
-        "clientes": [
-            "Ana López",
-            "Juan Pérez",
-            "María García",
-            "Carlos Díaz"
-        ],
+
         "horarios_validos": [
             [
                 "10",
@@ -96,5 +91,17 @@
         "categoria": "Cabello",
         "servicio": "Corte de cabello",
         "hora": "13:30"
+    },
+    {
+        "nombre": "marta perez",
+        "categoria": "Cabello",
+        "servicio": "Tinte de cabello",
+        "hora": "18:30"
+    },
+    {
+        "nombre": "leandro",
+        "categoria": "Cabello",
+        "servicio": "Tinte de cabello",
+        "hora": "14:30"
     }
 ]
