@@ -1,6 +1,5 @@
 [
     {
-
         "horarios_validos": [
             [
                 "10",
@@ -103,5 +102,60 @@
         "categoria": "Cabello",
         "servicio": "Tinte de cabello",
         "hora": "14:30"
+    },
+    {
+        "nombre": "leandro",
+        "categoria": "Depilación",
+        "servicio": "Depilación con hilo",
+        "hora": "16:40"
+    },
+    {
+        "nombre": "marta",
+        "categoria": "Cabello",
+        "servicio": "Tinte de cabello",
+        "hora": "13:50"
+    },
+    {
+        "nombre": "1",
+        "categoria": "Uñas",
+        "servicio": "Manicura",
+        "hora": "13:50"
+    },
+    {
+        "nombre": "1",
+        "categoria": "Cabello",
+        "servicio": "Corte de cabello",
+        "hora": "13:40"
+    },
+    {
+        "nombre": "1",
+        "categoria": "Cabello",
+        "servicio": "Corte de cabello",
+        "hora": "12:00"
+    },
+    {
+        "nombre": "1",
+        "categoria": "Cabello",
+        "servicio": "Corte de cabello",
+        "hora": "12:30"
+    },
+    {
+        "nombre": "2",
+        "categoria": "Uñas",
+        "servicio": "Pedicura",
+        "hora": "13:00"
+    },
+    {
+        "nombre": "2",
+        "categoria": "Cabello",
+        "servicio": "Tinte de cabello",
+        "hora": "13:00"
+    },
+    {
+        "nombre": "1",
+        "categoria": "Cabello",
+        "servicio": "Tinte de cabello",
+        "fecha": "2025-06-15",
+        "hora": "13:30"
     }
 ]

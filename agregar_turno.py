@@ -1,34 +1,14 @@
 import json
 import os
+from horarios import horario_disponible
+from servicios import CATEGORIAS
 
 def agregar_turno():
     print("=== Agregar Turno ===")
     nombre = input("Ingrese el nombre del cliente: ")
     
-    categorias = {
-        "Cabello": [
-            "Corte de cabello",
-            "Tinte de cabello",
-            "Peinado",
-            "Tratamiento capilar"
-        ],
-        "Uñas": [
-            "Manicura",
-            "Pedicura"
-        ],
-        "Facial": [
-            "Masaje facial",
-            "Limpieza facial",
-            "Maquillaje"
-        ],
-        "Depilación": [
-            "Depilación con cera",
-            "Depilación con hilo"
-        ]
-    }
-    
     print("Categorías de servicios:")
-    categorias_lista = list(categorias.keys())
+    categorias_lista = list(CATEGORIAS.keys())
     for i, cat in enumerate(categorias_lista, 1):
         print(f"{i}. {cat}")
     
@@ -44,7 +24,7 @@ def agregar_turno():
             print("Por favor, ingrese un número válido.")
     
     print(f"Servicios disponibles en {categoria_elegida}:")
-    servicios = categorias[categoria_elegida]
+    servicios = CATEGORIAS[categoria_elegida]
     for i, servicio in enumerate(servicios, 1):
         print(f"{i}. {servicio}")
     
@@ -58,16 +38,7 @@ def agregar_turno():
                 print("Opción inválida. Intente de nuevo.")
         except ValueError:
             print("Por favor, ingrese un número válido.")
-    
-    hora = input("Ingrese la hora del turno: ")
-    turno = {
-        "nombre": nombre,
-        "categoria": categoria_elegida,
-        "servicio": servicio_elegido,
-        "hora": hora
-    }
 
-    # Guardar en clientes.json (sin except json.JSONDecodeError)
     archivo = "clientes.json"
     if os.path.exists(archivo):
         with open(archivo, "r", encoding="utf-8") as f:
@@ -79,12 +50,38 @@ def agregar_turno():
     else:
         clientes = []
 
+    # Solicitar fecha del turno ANTES de la hora
+    while True:
+        fecha = input("Ingrese la fecha del turno (YYYY-MM-DD): ")
+        try:
+            from datetime import datetime
+            fecha_turno = datetime.strptime(fecha, "%Y-%m-%d")
+            break
+        except ValueError:
+            print("Formato de fecha incorrecto. Use YYYY-MM-DD (ejemplo: 2024-06-15)")
+
+    # Solicitar hora del turno y validar disponibilidad
+    while True:
+        hora = input("Ingrese la hora del turno (HH:MM): ")
+        if not horario_disponible(clientes, categoria_elegida, hora, fecha):
+            print("El horario está ocupado para esta categoría y fecha o el formato es incorrecto. Debe haber al menos 1 hora de diferencia.")
+        else:
+            break
+
+    turno = {
+        "nombre": nombre,
+        "categoria": categoria_elegida,
+        "servicio": servicio_elegido,
+        "fecha": fecha,
+        "hora": hora
+    }
+
     clientes.append(turno)
 
     with open(archivo, "w", encoding="utf-8") as f:
         json.dump(clientes, f, ensure_ascii=False, indent=4)
 
-    print(f"Turno agregado para {nombre} - Servicio: {servicio_elegido} - Hora: {hora}")
+    print(f"Turno agregado para {nombre} - Servicio: {servicio_elegido} - Fecha: {fecha} - Hora: {hora}")
 
 if __name__ == "__main__":
     agregar_turno()
